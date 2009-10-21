@@ -9,7 +9,7 @@
 /* It's highly recommended to use CGL macros instead of changing the current context for plug-ins that perform OpenGL rendering */
 #import <OpenGL/CGLMacro.h>
 
-#import "QC_Plugin_TestPlugIn.h"
+#import "QCtoOFImagePlugin.h"
 
 #define	kQCPlugIn_Name				@"QC to OF Image Demo"
 #define	kQCPlugIn_Description		@"ofxQCPlugin Demo: passing an image to Open Frameworks from Quartz Composer using ofxQCPlugin.\n\nvade \n\nhttp://code.google.com/p/ofxqcplugin/"
@@ -20,7 +20,7 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 	glDeleteTextures(1, &name);
 }
 
-@implementation QC_Plugin_TestPlugIn
+@implementation QCtoOFImagePlugin
 
 // for whatever reason, we can't put these in our superclass
 // it causes compilation errors. this is sad. :(
@@ -56,7 +56,7 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 
 @end
 
-@implementation QC_Plugin_TestPlugIn (Execution)
+@implementation QCtoOFImagePlugin (Execution)
 
 - (BOOL) startExecution:(id<QCPlugInContext>)context
 {			
