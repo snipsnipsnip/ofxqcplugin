@@ -8,5 +8,10 @@
  */
 
 #import "ofxQCBaseWindowProxy.h"
-#import "ofxQCImageUtilities.h"
-#import "ofxQCPluginSuperClass.h"
+#import "ofxQCIOUtilities.h"
+
+// We are not going to use this just yet, this causes namespace pollution
+// if more than one QC Plugin uses it. 
+// However, it is useful to hide some of the code and simplify things. 
+// Hrm. Thoughts?
+//#import "ofxQCPluginSuperClass.h"

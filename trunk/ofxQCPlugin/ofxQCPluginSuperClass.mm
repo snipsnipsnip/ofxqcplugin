@@ -11,8 +11,8 @@
 
 #import "ofxQCPluginSuperClass.h"
 
-#define	kQCPlugIn_Name				@"Open Frameworks Demo"
-#define	kQCPlugIn_Description		@"Open Frameworks running within Quartz Compose"
+#define	kQCPlugIn_Name				@"QC To OF Image Demo"
+#define	kQCPlugIn_Description		@"Open Frameworks running within Quartz Composer Demo"
 
 @implementation ofxQCPluginSuperClass
 
