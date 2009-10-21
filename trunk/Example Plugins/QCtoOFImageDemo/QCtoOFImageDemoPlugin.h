@@ -15,15 +15,27 @@
 #import <Quartz/Quartz.h>
 
 // this is our Open Frameworks ofBaseApp implementation.
-class testApp;
+class qctoOFImageTestApp;
 
 // our plugin is a subclass of our ofxQCPluginSuperClass
 // which implements specific functionality we want.
-@interface QCtoOFImageDemoPlugin : ofxQCPluginSuperClass
+@interface QCtoOFImageDemoPlugin : QCPlugIn
 {
+	// our faux window
+	ofxQCBaseWindowProxy* windowProxy;
+
 	// an instance of our ofBaseApp for our plugin
-	testApp* pluginTestApp;
+	qctoOFImageTestApp* pluginTestApp;
 }
+
+// we need these!
+@property (assign) double inputMousePositionX;
+@property (assign) double inputMousePositionY;
+@property (assign) BOOL inputMousePressedLeft;
+@property (assign) BOOL inputMousePressedRight;
+
+@property (assign) double inputWindowSizeX;
+@property (assign) double inputWindowSizeY;
 
 
 @property (assign) id<QCPlugInInputImageSource> inputImage;

@@ -1,18 +1,18 @@
 #include "testApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup()
+void qctoOFImageTestApp::setup()
 {	
 	testOfImage.loadImage("tdf_1972_poster.jpg");
 }
 
 //--------------------------------------------------------------
-void testApp::update()
+void qctoOFImageTestApp::update()
 {
 }
 
 //--------------------------------------------------------------
-void testApp::draw()
+void qctoOFImageTestApp::draw()
 {
 	glColor4f(1.0, 1.0, 1.0, 1.0);
 
@@ -35,37 +35,37 @@ void testApp::draw()
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void qctoOFImageTestApp::keyPressed(int key){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void qctoOFImageTestApp::keyReleased(int key){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y )
+void qctoOFImageTestApp::mouseMoved(int x, int y )
 {
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void qctoOFImageTestApp::mouseDragged(int x, int y, int button){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void qctoOFImageTestApp::mousePressed(int x, int y, int button){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void qctoOFImageTestApp::mouseReleased(int x, int y, int button){
 	
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void qctoOFImageTestApp::windowResized(int w, int h){
 	
 }
 

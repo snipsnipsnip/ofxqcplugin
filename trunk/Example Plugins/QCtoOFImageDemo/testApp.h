@@ -3,7 +3,7 @@
 
 #include "ofMain.h"
 
-class testApp : public ofBaseApp
+class qctoOFImageTestApp : public ofBaseApp
 {
 	public:
 		void setup();
