@@ -28,3 +28,4 @@ Example Plugins:
 	
 	QCtoOFImage: The opposite of above, sends any image from Quart Composer into Open Frameworks.
 	
+	SoundPlayerFFT: A port of the Sound Player FFT example with mp3 loading, playback, interactive mouse graphics and FFT analysis and visualization.
