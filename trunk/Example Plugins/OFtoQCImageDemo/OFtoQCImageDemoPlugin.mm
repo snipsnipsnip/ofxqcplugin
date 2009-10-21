@@ -17,7 +17,6 @@
 
 static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name, void* context)
 {	
-	NSLog(@"deleting texture: %u", name);
 	glDeleteTextures(1, &name);
 }
 
@@ -42,7 +41,33 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 
 + (NSDictionary*) attributesForPropertyPortWithKey:(NSString*)key
 {
-	return [super attributesForPropertyPortWithKey:key];
+	if([key isEqualToString:@"inputMousePositionX"])
+		return [NSDictionary dictionaryWithObject:@"Mouse X Position" forKey:QCPortAttributeNameKey];
+	
+	if([key isEqualToString:@"inputMousePositionY"])
+		return [NSDictionary dictionaryWithObject:@"Mouse Y Position" forKey:QCPortAttributeNameKey];
+	
+	if([key isEqualToString:@"inputMousePressedLeft"])
+		return [NSDictionary dictionaryWithObject:@"Left Button" forKey:QCPortAttributeNameKey];
+	
+	if([key isEqualToString:@"inputMousePressedRight"])
+		return [NSDictionary dictionaryWithObject:@"Right Button" forKey:QCPortAttributeNameKey];
+	
+	if([key isEqualToString:@"inputWindowSizeX"])
+		return [NSDictionary dictionaryWithObject:@"Window Width" forKey:QCPortAttributeNameKey];
+	
+	if([key isEqualToString:@"inputWindowSizeY"])
+		return [NSDictionary dictionaryWithObject:@"Window Height" forKey:QCPortAttributeNameKey];
+	
+	if([key isEqualToString:@"outputImage"])
+		return [NSDictionary dictionaryWithObject:@"Image" forKey:QCPortAttributeNameKey];
+	
+	return nil;
+}
+
++ (NSArray*) sortedPropertyPortKeys
+{
+	return [NSArray arrayWithObjects:@"inputImage", @"inputMousePositionX", @"inputMousePositionY", @"inputMousePressedLeft", @"inputMousePressedRight", @"inputWindowSizeX", @"inputWindowSizeY", nil];
 }
 
 + (QCPlugInExecutionMode) executionMode
@@ -55,6 +80,28 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 	return kQCPlugInTimeModeTimeBase;
 }
 
+- (id) init
+{
+	if(self = [super init])
+	{
+		// we have to init our ofBaseApp when we have a GL Context, thus StartExecution:		
+	}
+	
+	return self;
+}
+
+- (void) finalize
+{
+	[super finalize];
+}
+
+- (void) dealloc
+{
+	// need to properly dealloc testApp here.
+	
+	[super dealloc];
+}
+
 @end
 
 @implementation OFtoQCImageDemoPlugin (Execution)
@@ -63,16 +110,38 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 {			
 	// the only thing we *HAVE* to do, is make sure we instantiate a new 
 	// ofBaseApp implementation!
-	
-	pluginTestApp = new ofToQCImageTestApp();
-	
+		
 	// this will let our superclass QC Plugin talk to our custom ofBaseApp
 	// and the QC Plugin will take care of everything else.
-	[self setOfBaseAppPointerValue:[NSValue valueWithPointer:pluginTestApp]];
 
 	// call our super plugins start execution method
 	// this will set up the Open frameworks environment, the proxy window, etc for us.
-	[super startExecution:context];
+	CGLContextObj cgl_ctx = [context CGLContextObj];
+	CGLSetCurrentContext(cgl_ctx);
+	CGLLockContext(cgl_ctx);
+	
+	windowProxy = new ofxQCBaseWindowProxy();
+	
+	// this basically just sets up the coordinate system for OF.
+	// you no longer draw to Quartz Composers -1, 1 QC unit coordinate space
+	// but an OF one based on 0, 
+	
+	ofSetupOpenGL(windowProxy, 1024, 768, OF_WINDOW); 
+	
+	pluginTestApp = new ofToQCImageTestApp();
+
+	// run our ofBaseApp.
+	ofRunApp(pluginTestApp);
+	
+	NSString* dataPath = [NSString stringWithFormat:@"%@/Contents/Resources/Data/", [[NSBundle bundleForClass:[self class]] bundlePath]];
+	
+	ofSetDataPathRoot([dataPath cString]);
+	
+	// we have to manually run setup()
+	ofGetAppPtr()->setup();
+	
+	CGLUnlockContext(cgl_ctx);
+	
 	return YES;
 }
 
@@ -82,13 +151,51 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 	// this uses our ofTextureFromQCImage, see ofxQCImageUtilities for details.
 	// call our super plugins execute method, this handles 
 	
-	BOOL didSuperExecute = [super execute:context atTime:time withArguments:arguments];
+	CGLContextObj cgl_ctx = [context CGLContextObj];
+	CGLSetCurrentContext(cgl_ctx);
+	CGLLockContext(cgl_ctx);
+	
+	// update our proxy "window" size..
+	if([self didValueForInputKeyChange:@"inputWindowSizeX"] || [self didValueForInputKeyChange:@"inputWindowSizeX"])
+	{
+		windowProxy->setWindowShape(self.inputWindowSizeX, self.inputWindowSizeY);
+	}
+	
+	// handle virtual input to our of App Pointer
+	// TODO: keyboard input and other mouse related functions
+	if([self didValueForInputKeyChange:@"inputMousePositionX"] || [self didValueForInputKeyChange:@"inputMousePositionY"])
+	{
+		float aspect = windowProxy->getWindowSize().y/windowProxy->getWindowSize().x;
+		float normalizedMouseX = ((self.inputMousePositionX + 1) * 0.5);
+		float normalizedMouseY = (self.inputMousePositionY - (-aspect))/(aspect - (-aspect));
+		
+		float mouseX = normalizedMouseX * windowProxy->getWindowSize().x;
+		float mouseY = (windowProxy->getWindowSize().y) - (normalizedMouseY * windowProxy->getWindowSize().y);
+		
+		ofGetAppPtr()->mouseMoved(mouseX, mouseY);
+		ofGetAppPtr()->mouseX = mouseX;
+		ofGetAppPtr()->mouseY = mouseY;
+	}
+	
+	// do our actual per frame drawing here
+	// we use the windowProxy to handle coordinate space conversions for us
+	// based on our passed in window size.
+	
+	windowProxy->update();
+	windowProxy->draw();
 	
 	// call any post OF actions here, like extracting QCImages from ofTextures and the like.	
 	self.outputImage = qcImageFromOfImage(context, pluginTestApp->testOfImage, (void*)MyQCPlugInTextureReleaseCallback);
 
-	
-	return didSuperExecute;
+	CGLUnlockContext(cgl_ctx);
+
+	return YES;
 }
+
+- (void) stopExecution:(id<QCPlugInContext>)context
+{
+	ofGetAppPtr()->exit();
+}
+
 
 @end
