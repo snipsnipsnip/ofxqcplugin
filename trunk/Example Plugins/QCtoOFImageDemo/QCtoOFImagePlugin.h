@@ -19,7 +19,7 @@ class testApp;
 
 // our plugin is a subclass of our ofxQCPluginSuperClass
 // which implements specific functionality we want.
-@interface QC_Plugin_TestPlugIn : ofxQCPluginSuperClass
+@interface QCtoOFImagePlugin : ofxQCPluginSuperClass
 {
 	// an instance of our ofBaseApp for our plugin
 	testApp* pluginTestApp;
