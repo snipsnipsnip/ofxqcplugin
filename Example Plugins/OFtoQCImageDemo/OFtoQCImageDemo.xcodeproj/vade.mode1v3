@@ -264,8 +264,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>089C166AFE841209C02AAC07</string>
-								<string>1B42714010812F5F00360A9F</string>
-								<string>1B42715210812F5F00360A9F</string>
 								<string>1B92F073108C175C000764D3</string>
 								<string>1B427C3C1082CBD600360A9F</string>
 								<string>08FB77AFFE84173DC02AAC07</string>
@@ -275,20 +273,23 @@
 								<string>19C28FB8FE9D52D311CA2CBB</string>
 								<string>8D5B49B6048680CD000E48DA</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>1B915999108ED8BA00EFDC51</string>
+								<string>1B91599A108ED8BA00EFDC51</string>
+								<string>1B91599B108ED8BA00EFDC51</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>29</integer>
-									<integer>22</integer>
-									<integer>21</integer>
+									<integer>9</integer>
+									<integer>4</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 43}, {400, 753}}</string>
+							<string>{{0, 0}, {400, 753}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -307,7 +308,7 @@
 							<real>400</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>41 59 1399 812 0 0 1440 878 </string>
+						<string>191 66 1399 812 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -325,7 +326,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ofxQCPluginSuperClass.mm</string>
+								<string>ofxQCImageUtilities.mm</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -333,11 +334,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ofxQCPluginSuperClass.mm</string>
+										<string>ofxQCImageUtilities.mm</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1B915972108ED4B200EFDC51</string>
+										<string>1B9159AD108ED8F100EFDC51</string>
 										<key>history</key>
 										<array>
 											<string>1B42799110819EEB00360A9F</string>
@@ -358,18 +359,19 @@
 											<string>1BBC9411108ECE0B0067BE9F</string>
 											<string>1BBC942F108ECEF50067BE9F</string>
 											<string>1BBC9450108ED10F0067BE9F</string>
-											<string>1BBC9451108ED10F0067BE9F</string>
 											<string>1B915930108ED22A00EFDC51</string>
 											<string>1B915931108ED22A00EFDC51</string>
 											<string>1B915932108ED22A00EFDC51</string>
 											<string>1B915933108ED22A00EFDC51</string>
 											<string>1B915934108ED22A00EFDC51</string>
-											<string>1B91594F108ED3CB00EFDC51</string>
-											<string>1B915955108ED49D00EFDC51</string>
 											<string>1B915956108ED49D00EFDC51</string>
 											<string>1B915970108ED4B200EFDC51</string>
-											<string>1B915971108ED4B200EFDC51</string>
-											<string>1BBC9447108ECFF30067BE9F</string>
+											<string>1B91599C108ED8BA00EFDC51</string>
+											<string>1B91599E108ED8BA00EFDC51</string>
+											<string>1B9159A4108ED8E400EFDC51</string>
+											<string>1B9159A5108ED8E400EFDC51</string>
+											<string>1B9159AC108ED8F100EFDC51</string>
+											<string>1B9159A6108ED8E400EFDC51</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -383,7 +385,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {977, 690}}</string>
 								<key>RubberWindowFrame</key>
-								<string>41 59 1399 812 0 0 1440 878 </string>
+								<string>191 66 1399 812 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -403,7 +405,7 @@
 								<key>Frame</key>
 								<string>{{0, 695}, {977, 76}}</string>
 								<key>RubberWindowFrame</key>
-								<string>41 59 1399 812 0 0 1440 878 </string>
+								<string>191 66 1399 812 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -567,16 +569,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1B91597D108ED4B200EFDC51</string>
+		<string>1B9159AE108ED8F100EFDC51</string>
 		<string>1B91597E108ED4B200EFDC51</string>
 		<string>1B91597F108ED4B200EFDC51</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1B4271941081313700360A9F</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/SVNWorkingCopies/ofxQCPlugin/Example Plugins/OFtoQCImageDemo/OFtoQCImageDemo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>41 59 1399 812 0 0 1440 878 </string>
+	<string>191 66 1399 812 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -597,7 +599,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>OFtoQCImageDemoPlugin.mm</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -614,6 +616,8 @@
 							<string>272pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -908,6 +912,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -953,7 +959,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

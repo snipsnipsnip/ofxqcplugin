@@ -18,14 +18,24 @@
 // it should be a unique class name for all potential plugins.
 class ofToQCImageTestApp;
 
-// our plugin is a subclass of our ofxQCPluginSuperClass
-// which implements specific functionality we want.
-@interface OFtoQCImageDemoPlugin : ofxQCPluginSuperClass
+
+@interface OFtoQCImageDemoPlugin : QCPlugIn
 {
+	// our faux window
+	ofxQCBaseWindowProxy* windowProxy;
+
 	// an instance of our ofBaseApp for our plugin
 	ofToQCImageTestApp* pluginTestApp;
 }
 
+// we need these!
+@property (assign) double inputMousePositionX;
+@property (assign) double inputMousePositionY;
+@property (assign) BOOL inputMousePressedLeft;
+@property (assign) BOOL inputMousePressedRight;
+
+@property (assign) double inputWindowSizeX;
+@property (assign) double inputWindowSizeY;
 
 //@property (assign) id<QCPlugInInputImageSource> inputImage;
 
