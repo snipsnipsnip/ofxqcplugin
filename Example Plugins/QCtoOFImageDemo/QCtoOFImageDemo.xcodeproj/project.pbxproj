@@ -68,7 +68,6 @@
 		1B427AA51081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B427AA41081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp */; };
 		1B427C3F1082CC1000360A9F /* ofxQCImageUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B427C3E1082CC1000360A9F /* ofxQCImageUtilities.mm */; };
 		1B8CA42310845AAE00C63002 /* tdf_1972_poster.jpg in Data */ = {isa = PBXBuildFile; fileRef = 1B8CA42210845AAA00C63002 /* tdf_1972_poster.jpg */; };
-		1B92EF18108A9820000764D3 /* ofxQCPluginSuperClass.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B92EF17108A9820000764D3 /* ofxQCPluginSuperClass.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -673,7 +672,6 @@
 				1B4277D910816F3200360A9F /* testApp.cpp in Sources */,
 				1B427AA51081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp in Sources */,
 				1B427C3F1082CC1000360A9F /* ofxQCImageUtilities.mm in Sources */,
-				1B92EF18108A9820000764D3 /* ofxQCPluginSuperClass.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

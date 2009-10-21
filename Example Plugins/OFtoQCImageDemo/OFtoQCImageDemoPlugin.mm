@@ -188,7 +188,7 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 	self.outputImage = qcImageFromOfImage(context, pluginTestApp->testOfImage, (void*)MyQCPlugInTextureReleaseCallback);
 
 	CGLUnlockContext(cgl_ctx);
-
+	
 	return YES;
 }
 
