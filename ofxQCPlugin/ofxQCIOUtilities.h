@@ -53,7 +53,10 @@
 // Quartz Composer will handle disposing of them, so you can re-use your ofImages/ofTextures should you want. 
 // Quartz Composer images are temporary and end up being recycled at the end of the draw cycle.
 
-// function information:
+
+//----------------------------------------------
+// Image IO
+//----------------------------------------------
 
 // Quartz Composer wants a unique (disposable) rect texture each frame. 
 // This copies any texture to a new GL_TEXTURE_RECTANGLE_ARB texture for disposable output.
@@ -73,3 +76,9 @@ id <QCPlugInOutputImageProvider> qcImageFromOfImage(id<QCPlugInContext> qcContex
 // return a valiud output image provider for QC from an ofTexture.
 id <QCPlugInOutputImageProvider> qcImageFromOfTexture(id<QCPlugInContext> qcContext, ofTexture texture, void* releaseCallback);
 
+//----------------------------------------------
+// Color IO
+//----------------------------------------------
+
+CGColorRef cgColorRefFromofColor(ofColor color);
+ofColor ofColorFromCGColorRef(CGColorRef color);

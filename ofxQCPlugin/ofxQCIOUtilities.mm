@@ -8,7 +8,7 @@
  */
 
 // eventually use CGLMacro.h yo
-#include "ofxQCImageUtilities.h"
+#include "ofxQCIOUtilities.h"
 
 //GLuint copyofTextureToRectTexture(id<QCPlugInContext> qcContext, ofTexture* texture)
 // need to handle flipped ? hrm.
@@ -112,6 +112,8 @@ GLuint copyTextureToRectTexture(id<QCPlugInContext> qcContext, GLuint textureNam
 	
 	CGLUnlockContext([qcContext CGLContextObj]);
 	
+//	NSLog(@"new texture: %u", newTex);
+	
 	return newTex;
 }
 
@@ -123,7 +125,6 @@ ofTexture* ofTextureFromQCImage(id<QCPlugInContext> qcContext, id<QCPlugInInputI
 	
 	ofTexture* newOfTexture = new ofTexture();
 	
-	
 	// lock our qcImage buffers rep 
 	if(newOfTexture && qcImage && [qcImage lockTextureRepresentationWithColorSpace:[qcImage imageColorSpace] forBounds:[qcImage imageBounds]])
 	{
@@ -132,17 +133,14 @@ ofTexture* ofTextureFromQCImage(id<QCPlugInContext> qcContext, id<QCPlugInInputI
 		[qcImage bindTextureRepresentationToCGLContext:[qcContext CGLContextObj] textureUnit:GL_TEXTURE0 normalizeCoordinates:NO];
 		
 		GLuint newTextureID = copyTextureToRectTexture(qcContext, [qcImage textureName], [qcImage imageBounds].size.width, [qcImage imageBounds].size.height, [qcImage textureTarget]);
-		
-		//ofTextureData data = newOfTexture->texData;
-		
+				
 		// set the texture data params manually cause we are awesome like that.
-		
 		newOfTexture->texData.textureName[0] = newTextureID;
 		newOfTexture->texData.textureID = newTextureID;
 		newOfTexture->texData.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
 		newOfTexture->texData.width = [qcImage imageBounds].size.width;
 		newOfTexture->texData.height = [qcImage imageBounds].size.height;
-		newOfTexture->texData.bFlipTexture = [qcImage textureFlipped]; // was rendered in proper 
+		newOfTexture->texData.bFlipTexture = [qcImage textureFlipped]; // proper flippage.
 		newOfTexture->texData.tex_w = [qcImage imageBounds].size.width;
 		newOfTexture->texData.tex_h = [qcImage imageBounds].size.height;
 		newOfTexture->texData.tex_t = [qcImage imageBounds].size.width;
@@ -168,6 +166,9 @@ ofImage* ofImageFromQCImage(id<QCPlugInContext> qcContext, id<QCPlugInInputImage
 		ofImage* newOfImage = new ofImage();
 		
 		// read in image data from QC.
+		
+		// TODO: make this work.
+		// this is totally broken, we need to memcopy shit here or something, because once we unlock, things vanish.
 		newOfImage->setFromPixels((unsigned char*)[qcImage bufferBaseAddress], [qcImage imageBounds].size.width, [qcImage imageBounds].size.height, OF_IMAGE_COLOR_ALPHA, NO);
 			
 		[qcImage unlockBufferRepresentation];
@@ -204,7 +205,7 @@ id <QCPlugInOutputImageProvider> qcImageFromOfImage(id<QCPlugInContext> qcContex
 	{		
 		ofTextureData data = imageTexture.getTextureData(); 
 		
-		//NSLog(@"outputting provider with texture: %u, dimensions: %f %f from image: %p", data.textureID, image.getWidth(), image.getHeight(), &image);
+//		NSLog(@"outputting provider with texture: %u, dimensions: %f %f from image: %p", data.textureID, image.getWidth(), image.getHeight(), &image);
 		
 		CGLSetCurrentContext([qcContext CGLContextObj]);
 		
@@ -248,7 +249,7 @@ id <QCPlugInOutputImageProvider> qcImageFromOfTexture(id<QCPlugInContext> qcCont
 	{		
 		ofTextureData data = texture.getTextureData(); 
 		
-		//NSLog(@"outputting provider with texture: %u, dimensions: %f %f from image: %p", data.textureID, image.getWidth(), image.getHeight(), &image);
+//		NSLog(@"outputting provider with texture: %u, dimensions: %f %f from image: %p", data.textureID, texture.getWidth(), texture.getHeight(), &texture);
 		
 		CGLSetCurrentContext([qcContext CGLContextObj]);
 		
@@ -267,6 +268,40 @@ id <QCPlugInOutputImageProvider> qcImageFromOfTexture(id<QCPlugInContext> qcCont
 	CGColorSpaceRelease(colorspace);
 	
 	return outputProvider;
+}
+
+
+CGColorRef cgColorFromofColor(ofColor color)
+{
+	static float refColor[4];
+	refColor[0] = color.r/255.0;
+	refColor[1] = color.g/255.0;
+	refColor[2] = color.b/255.0;
+	refColor[3] = color.a/255.0;
+	
+	CGColorSpaceRef space = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+	
+	CGColorRef newColorRef =  CGColorCreate(space, refColor);
+
+	// no leaks
+	CGColorSpaceRelease(space);
+	
+	return newColorRef;
+}
+
+ofColor ofColorFromNSColor(CGColorRef color)
+{
+	ofColor newcolor = ofColor();
+	
+	const float* refColor;
+	refColor = CGColorGetComponents(color);
+	
+	newcolor.r = refColor[0];
+	newcolor.g = refColor[1];
+	newcolor.b = refColor[2];
+	newcolor.a = refColor[3];
+	
+	return newcolor;
 }
 
 
