@@ -184,8 +184,6 @@ static void MyQCPlugInTextureReleaseCallback (CGLContextObj cgl_ctx, GLuint name
 			ofGetAppPtr()->mouseReleased(mouseX, mouseY, 0);
 			ofGetAppPtr()->mouseReleased();
 		}
-	
-
 	}
 		
 	// check mouse motion

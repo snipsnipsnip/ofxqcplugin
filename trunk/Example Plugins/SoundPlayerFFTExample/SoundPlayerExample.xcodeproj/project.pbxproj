@@ -66,7 +66,7 @@
 		1B4277D910816F3200360A9F /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B4277D710816F3200360A9F /* testApp.cpp */; };
 		1B4277E81081703400360A9F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		1B427AA51081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B427AA41081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp */; };
-		1B427C3F1082CC1000360A9F /* ofxQCImageUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B427C3E1082CC1000360A9F /* ofxQCImageUtilities.mm */; };
+		1B427C3F1082CC1000360A9F /* ofxQCIOUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1B427C3E1082CC1000360A9F /* ofxQCIOUtilities.mm */; };
 		1B915A35108EECD400EFDC51 /* dog.mp3 in Data */ = {isa = PBXBuildFile; fileRef = 1B915A31108EECB900EFDC51 /* dog.mp3 */; };
 		1B915A36108EECD400EFDC51 /* jdee_beat.mp3 in Data */ = {isa = PBXBuildFile; fileRef = 1B915A32108EECB900EFDC51 /* jdee_beat.mp3 */; };
 		1B915A37108EECD400EFDC51 /* ow.mp3 in Data */ = {isa = PBXBuildFile; fileRef = 1B915A33108EECB900EFDC51 /* ow.mp3 */; };
@@ -185,8 +185,8 @@
 		1B4277D810816F3200360A9F /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
 		1B427AA31081AB5B00360A9F /* ofxQCBaseWindowProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQCBaseWindowProxy.h; sourceTree = "<group>"; };
 		1B427AA41081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxQCBaseWindowProxy.cpp; sourceTree = "<group>"; };
-		1B427C3D1082CC1000360A9F /* ofxQCImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQCImageUtilities.h; sourceTree = "<group>"; };
-		1B427C3E1082CC1000360A9F /* ofxQCImageUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxQCImageUtilities.mm; sourceTree = "<group>"; };
+		1B427C3D1082CC1000360A9F /* ofxQCIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQCIOUtilities.h; sourceTree = "<group>"; };
+		1B427C3E1082CC1000360A9F /* ofxQCIOUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxQCIOUtilities.mm; sourceTree = "<group>"; };
 		1B427C421082ED8A00360A9F /* ofxQCPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQCPlugin.h; sourceTree = "<group>"; };
 		1B915A31108EECB900EFDC51 /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		1B915A32108EECB900EFDC51 /* jdee_beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jdee_beat.mp3; sourceTree = "<group>"; };
@@ -560,8 +560,8 @@
 				1B427C421082ED8A00360A9F /* ofxQCPlugin.h */,
 				1B427AA31081AB5B00360A9F /* ofxQCBaseWindowProxy.h */,
 				1B427AA41081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp */,
-				1B427C3D1082CC1000360A9F /* ofxQCImageUtilities.h */,
-				1B427C3E1082CC1000360A9F /* ofxQCImageUtilities.mm */,
+				1B427C3D1082CC1000360A9F /* ofxQCIOUtilities.h */,
+				1B427C3E1082CC1000360A9F /* ofxQCIOUtilities.mm */,
 				1B92EF16108A9820000764D3 /* ofxQCPluginSuperClass.h */,
 				1B92EF17108A9820000764D3 /* ofxQCPluginSuperClass.mm */,
 			);
@@ -681,7 +681,7 @@
 				1B42718510812F5F00360A9F /* ofVideoPlayer.cpp in Sources */,
 				1B4277D910816F3200360A9F /* testApp.cpp in Sources */,
 				1B427AA51081AB5B00360A9F /* ofxQCBaseWindowProxy.cpp in Sources */,
-				1B427C3F1082CC1000360A9F /* ofxQCImageUtilities.mm in Sources */,
+				1B427C3F1082CC1000360A9F /* ofxQCIOUtilities.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
