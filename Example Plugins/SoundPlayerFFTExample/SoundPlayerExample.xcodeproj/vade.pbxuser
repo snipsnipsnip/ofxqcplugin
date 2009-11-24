@@ -93,7 +93,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					602,
+					514,
 					60,
 					20,
 					48,
@@ -110,8 +110,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 280790302;
-			PBXWorkspaceStateSaveDate = 280790302;
+			PBXPerProjectTemplateStateSaveDate = 280792007;
+			PBXWorkspaceStateSaveDate = 280792007;
 		};
 		perUserProjectItems = {
 			1B11061210850D63003B590B /* PBXTextBookmark */ = 1B11061210850D63003B590B /* PBXTextBookmark */;
@@ -120,8 +120,8 @@
 			1B3899EB10BC832700C9EC1D /* PBXTextBookmark */ = 1B3899EB10BC832700C9EC1D /* PBXTextBookmark */;
 			1B3899F510BC843000C9EC1D /* PBXTextBookmark */ = 1B3899F510BC843000C9EC1D /* PBXTextBookmark */;
 			1B389AB710BC852B00C9EC1D /* PBXTextBookmark */ = 1B389AB710BC852B00C9EC1D /* PBXTextBookmark */;
-			1B389AB810BC852B00C9EC1D /* PBXTextBookmark */ = 1B389AB810BC852B00C9EC1D /* PBXTextBookmark */;
 			1B389AB910BC852B00C9EC1D /* PBXTextBookmark */ = 1B389AB910BC852B00C9EC1D /* PBXTextBookmark */;
+			1B389BA810BC8BDB00C9EC1D /* PBXTextBookmark */ = 1B389BA810BC8BDB00C9EC1D /* PBXTextBookmark */;
 			1B42799110819EEB00360A9F /* PBXTextBookmark */ = 1B42799110819EEB00360A9F /* PBXTextBookmark */;
 			1B427C881082FF3A00360A9F /* PBXTextBookmark */ = 1B427C881082FF3A00360A9F /* PBXTextBookmark */;
 			1B915931108ED22A00EFDC51 /* PBXTextBookmark */ = 1B915931108ED22A00EFDC51 /* PBXTextBookmark */;
@@ -263,17 +263,17 @@
 		vrLen = 944;
 		vrLoc = 2202;
 	};
-	1B389AB810BC852B00C9EC1D /* PBXTextBookmark */ = {
+	1B389AB910BC852B00C9EC1D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1B92EF16108A9820000764D3 /* ofxQCPluginSuperClass.h */;
-		name = "ofxQCPluginSuperClass.h: 9";
-		rLen = 0;
-		rLoc = 152;
+		name = "ofxQCPluginSuperClass.h: 8";
+		rLen = 1;
+		rLoc = 151;
 		rType = 0;
 		vrLen = 1033;
 		vrLoc = 0;
 	};
-	1B389AB910BC852B00C9EC1D /* PBXTextBookmark */ = {
+	1B389BA810BC8BDB00C9EC1D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1B92EF16108A9820000764D3 /* ofxQCPluginSuperClass.h */;
 		name = "ofxQCPluginSuperClass.h: 8";
@@ -913,7 +913,7 @@
 	};
 	1B92EF16108A9820000764D3 /* ofxQCPluginSuperClass.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {732, 657}}";
+			sepNavIntBoundsRect = "{{0, 0}, {732, 655}}";
 			sepNavSelRange = "{151, 1}";
 			sepNavVisRange = "{0, 1033}";
 		};

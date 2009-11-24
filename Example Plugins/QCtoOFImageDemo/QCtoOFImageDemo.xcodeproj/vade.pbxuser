@@ -86,7 +86,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					622,
+					565,
 					60,
 					20,
 					48,
@@ -103,8 +103,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 280790319;
-			PBXWorkspaceStateSaveDate = 280790319;
+			PBXPerProjectTemplateStateSaveDate = 280791787;
+			PBXWorkspaceStateSaveDate = 280791787;
 		};
 		perUserProjectItems = {
 			1B11061210850D63003B590B /* PBXTextBookmark */ = 1B11061210850D63003B590B /* PBXTextBookmark */;
@@ -113,8 +113,8 @@
 			1B389A1110BC84A700C9EC1D /* PBXTextBookmark */ = 1B389A1110BC84A700C9EC1D /* PBXTextBookmark */;
 			1B389A1210BC84A700C9EC1D /* PBXTextBookmark */ = 1B389A1210BC84A700C9EC1D /* PBXTextBookmark */;
 			1B389A6310BC84EE00C9EC1D /* PBXTextBookmark */ = 1B389A6310BC84EE00C9EC1D /* PBXTextBookmark */;
-			1B389A6410BC84EE00C9EC1D /* PBXTextBookmark */ = 1B389A6410BC84EE00C9EC1D /* PBXTextBookmark */;
 			1B389ACB10BC853300C9EC1D /* PBXTextBookmark */ = 1B389ACB10BC853300C9EC1D /* PBXTextBookmark */;
+			1B389B5710BC8B9B00C9EC1D /* PBXTextBookmark */ = 1B389B5710BC8B9B00C9EC1D /* PBXTextBookmark */;
 			1B42799110819EEB00360A9F /* PBXTextBookmark */ = 1B42799110819EEB00360A9F /* PBXTextBookmark */;
 			1B427C881082FF3A00360A9F /* PBXTextBookmark */ = 1B427C881082FF3A00360A9F /* PBXTextBookmark */;
 			1B9159E2108EDDA600EFDC51 /* PBXTextBookmark */ = 1B9159E2108EDDA600EFDC51 /* PBXTextBookmark */;
@@ -250,7 +250,7 @@
 		vrLen = 1031;
 		vrLoc = 0;
 	};
-	1B389A6410BC84EE00C9EC1D /* PBXTextBookmark */ = {
+	1B389ACB10BC853300C9EC1D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1B427C421082ED8A00360A9F /* ofxQCPlugin.h */;
 		name = "ofxQCPlugin.h: 17";
@@ -260,7 +260,7 @@
 		vrLen = 433;
 		vrLoc = 0;
 	};
-	1B389ACB10BC853300C9EC1D /* PBXTextBookmark */ = {
+	1B389B5710BC8B9B00C9EC1D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 1B427C421082ED8A00360A9F /* ofxQCPlugin.h */;
 		name = "ofxQCPlugin.h: 17";
@@ -578,7 +578,7 @@
 	};
 	1B427C421082ED8A00360A9F /* ofxQCPlugin.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {783, 781}}";
+			sepNavIntBoundsRect = "{{0, 0}, {783, 779}}";
 			sepNavSelRange = "{399, 0}";
 			sepNavVisRange = "{0, 433}";
 		};
