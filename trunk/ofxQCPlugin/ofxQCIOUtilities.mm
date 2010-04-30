@@ -8,7 +8,8 @@
  */
 
 // eventually use CGLMacro.h yo
-#include "ofxQCIOUtilities.h"
+
+#import "ofxQCIOUtilities.h"
 
 //GLuint copyofTextureToRectTexture(id<QCPlugInContext> qcContext, ofTexture* texture)
 // need to handle flipped ? hrm.
@@ -133,9 +134,9 @@ ofTexture* ofTextureFromQCImage(id<QCPlugInContext> qcContext, id<QCPlugInInputI
 		[qcImage bindTextureRepresentationToCGLContext:[qcContext CGLContextObj] textureUnit:GL_TEXTURE0 normalizeCoordinates:NO];
 		
 		GLuint newTextureID = copyTextureToRectTexture(qcContext, [qcImage textureName], [qcImage imageBounds].size.width, [qcImage imageBounds].size.height, [qcImage textureTarget]);
-				
+
 		// set the texture data params manually cause we are awesome like that.
-		newOfTexture->texData.textureName[0] = newTextureID;
+		//newOfTexture->texData.textureName[0] = newTextureID;
 		newOfTexture->texData.textureID = newTextureID;
 		newOfTexture->texData.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
 		newOfTexture->texData.width = [qcImage imageBounds].size.width;
@@ -145,7 +146,7 @@ ofTexture* ofTextureFromQCImage(id<QCPlugInContext> qcContext, id<QCPlugInInputI
 		newOfTexture->texData.tex_h = [qcImage imageBounds].size.height;
 		newOfTexture->texData.tex_t = [qcImage imageBounds].size.width;
 		newOfTexture->texData.tex_u = [qcImage imageBounds].size.height;
-		newOfTexture->texData.glTypeInternal = GL_RGBA; // ? is this correct?
+		newOfTexture->texData.glTypeInternal = GL_RGBA; // TODO:  ? is this correct?
 		newOfTexture->texData.glType = GL_RGBA;
 		newOfTexture->texData.bAllocated = true;
 		
@@ -197,22 +198,23 @@ id <QCPlugInOutputImageProvider> qcImageFromOfImage(id<QCPlugInContext> qcContex
 
 	CGColorSpaceRef colorspace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 
-	ofTexture imageTexture;
-	imageTexture = image.getTextureReference();
+	CGLSetCurrentContext([qcContext CGLContextObj]);
+
+	
+	//ofTexture imageTexture;
+	//imageTexture = image.getTextureReference();
 	
 	// depending on the ofImage, if its texture backed, we use a texture provider, otherwise a pixel buffer provider.
-	if(imageTexture.getTextureData().bAllocated == true)
+	if(image.getTextureReference().getTextureData().bAllocated == true)
 	{		
-		ofTextureData data = imageTexture.getTextureData(); 
-		
-//		NSLog(@"outputting provider with texture: %u, dimensions: %f %f from image: %p", data.textureID, image.getWidth(), image.getHeight(), &image);
-		
+		ofTextureData data = image.getTextureReference().getTextureData(); 
+				
 		CGLSetCurrentContext([qcContext CGLContextObj]);
 		
 		outputProvider = [qcContext outputImageProviderFromTextureWithPixelFormat:QCPlugInPixelFormatARGB8
 																	   pixelsWide:image.getWidth() 
 																	   pixelsHigh:image.getHeight()
-																			 name:copyTextureToRectTexture(qcContext, data.textureID, imageTexture.getWidth(), imageTexture.getHeight(), data.textureTarget)  //copyofTextureToRectTexture(qcContext, &imageTexture)
+																			 name:copyTextureToRectTexture(qcContext, data.textureID, image.getTextureReference().getWidth(), image.getTextureReference().getHeight(), data.textureTarget)  //copyofTextureToRectTexture(qcContext, &imageTexture)
 																		  flipped:NO // above function fixes that. 
 																  releaseCallback:(QCPlugInTextureReleaseCallback) releaseCallback 
 																   releaseContext:nil 
@@ -248,9 +250,7 @@ id <QCPlugInOutputImageProvider> qcImageFromOfTexture(id<QCPlugInContext> qcCont
 	if(texture.getTextureData().bAllocated == true)
 	{		
 		ofTextureData data = texture.getTextureData(); 
-		
-//		NSLog(@"outputting provider with texture: %u, dimensions: %f %f from image: %p", data.textureID, texture.getWidth(), texture.getHeight(), &texture);
-		
+				
 		CGLSetCurrentContext([qcContext CGLContextObj]);
 		
 		outputProvider = [qcContext outputImageProviderFromTextureWithPixelFormat:QCPlugInPixelFormatARGB8
