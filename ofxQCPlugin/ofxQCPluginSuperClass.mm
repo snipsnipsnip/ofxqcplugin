@@ -18,6 +18,9 @@
 
 @synthesize ofBaseAppPointerValue;
 
+/* It's highly recommended to use CGL macros instead of changing the current context for plug-ins that perform OpenGL rendering */
+#import <OpenGL/CGLMacro.h>
+
 @dynamic inputMousePositionX;
 @dynamic inputMousePositionY;
 @dynamic inputMousePressedLeft;

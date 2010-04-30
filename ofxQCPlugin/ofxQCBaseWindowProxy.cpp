@@ -7,8 +7,8 @@
  *
  */
 
-#import "ofxQCBaseWindowProxy.h"
 #import "ofMain.h"
+#import "ofxQCBaseWindowProxy.h"
 
 #pragma mark Constructor
 
@@ -23,6 +23,10 @@ ofxQCBaseWindowProxy::ofxQCBaseWindowProxy()
 	timeNow, timeThen, fps	= 0.0f;
 	
 	frameRate				= 0;
+	
+	// default to resetting GL modelview so we draw planar to the viewport
+	// ignoring any transforms QC has set.
+	resetModelViewMatrix	= 1;
 }
 
 #pragma mark Initialization methods
@@ -54,6 +58,7 @@ void ofxQCBaseWindowProxy::update()
 void ofxQCBaseWindowProxy::draw()
 {
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glPushClientAttrib(GL_CLIENT_ALL_ATTRIB_BITS);
 	
 	// save projection state
 	GLint matrixMode;
@@ -70,9 +75,13 @@ void ofxQCBaseWindowProxy::draw()
 	// set up coordinate system based on our proxy window.
 	glOrtho(0.0, windowSize.x, windowSize.y, 0.0, -1.0, 1.0);
 		
+	
+	
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	glLoadIdentity();
+
+	if(resetModelViewMatrix)
+		glLoadIdentity();
 		
 	ofGetAppPtr()->draw();
 		
@@ -88,6 +97,7 @@ void ofxQCBaseWindowProxy::draw()
 	glMatrixMode(matrixMode);
 
 	glPopAttrib();
+	glPopClientAttrib();
 	
 	// FPS calculation stolen from Memos code. Thanks Memo :)
 	timeNow = ofGetElapsedTimef();
@@ -102,6 +112,17 @@ void ofxQCBaseWindowProxy::draw()
 	// increase the overall frame count
 	nFrameCount++;			
 }
+
+void ofxQCBaseWindowProxy::setAllow3DTransformsFromQC(bool y)
+{
+	resetModelViewMatrix = y;
+}
+
+bool ofxQCBaseWindowProxy::allow3DTransformsFromQC()
+{
+	return resetModelViewMatrix;
+}
+
 
 #pragma mark Proxy placeholder methods
 

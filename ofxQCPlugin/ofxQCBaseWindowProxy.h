@@ -15,6 +15,7 @@
 // This calls ofGetAppPtrs update and draw methods each frame
 // and just holds the window size, 'mouse' position, and things like that.
 
+
 #import "ofAppBaseWindow.h"
 
 class ofxQCBaseWindowProxy: public ofAppBaseWindow 
@@ -68,5 +69,11 @@ class ofxQCBaseWindowProxy: public ofAppBaseWindow
 		int					nFrameCount;
 		bool				bEnableSetupScreen;
 		float				frameRate;	
+	
+		// vade addition
+		bool				resetModelViewMatrix;
+		void				setAllow3DTransformsFromQC(bool y);
+		bool				allow3DTransformsFromQC();
+
 };
 
